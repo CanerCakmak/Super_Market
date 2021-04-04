@@ -1,15 +1,38 @@
 int main fonksiyonunda atanan değişkenler;
 menu: Switch yapısındaki kontrolü sağlıyor. NOT: goto deyimindeki menu ile karıştırma
 i: musteriekle fonksiyonundaki döngü için kullanılıyor. i nin atamasını ve arttırımı int main fonksiyonunda.
+
 musteriekle fonksiyonundaki değişkenler;
 ad: kullanıcının girdiği ismi kısa süreli kendisinde tutup struct a kopyalıyor
 soyad: soyismi kopyalıyor
 num: telefon numarasını kopyalıyor
 k: fonksiyondaki döngüyü kontrol ediyor
+
+urunekle fonksiyonundaki değişkenler:
+urnid: UrunId lerini kısa süreliğine tutup structa gönderiyor
+urnad: Urunlerin adlarını structa gönderiyor
+urnktgr: urunlerin kategorilerini structa gönderiyor
+urnfiyat:urunlerin fiyatlarını structa gönderiyor
+z fonksiyon dögüsünü kontrol ediyor.
+t yeni indexlere yardımcı oluyor (main fonksiyonu içinde tanımlı)
+l yeni eklelenen indislerin yazılmasına yardımcı oluyor (main fonksiyonu içinde tanımlı)
+
 struct'daki değişkenler:
 isim: müşterilerin isimlerini tutuyor.
 soyisim: soyisimlerini tutuyor.
 numara: telefon numaralarını tutuyor.
+
+urunid: ürünlerin Idlerini tutuyor
+urunisim: urunlerin isimleri tutmaya yardımcı oluyor
+urunkategori: urunlerin kategorsini tutmaya yardımcı oluyor
+urunadet: urunlerin adetlerini tutmaya yardımcı oluyor
+urunfiyat: urunlerin fiyatlarını tutmaya yardımcı oluyor
+
+
+
 struct yapıları
 struct ın ilk ismi müsteri, int main fonksiyonundaki adı musteribilgi,musteriekle fonksiyonundaki adı mstr.
 struct ı Array olarak ve 5 indisli atadım istersen indisini arttırabilirsin.
+
+urunlerin tutulduğu struct ismi urun , main fonksiyondaki struct utunler, urunekle fonksiyonunda urn.
+struct array olarak 7 indis verdim bunun bunların 0-1-2-3-4 olanları ben atadım.
