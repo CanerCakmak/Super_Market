@@ -1,0 +1,15 @@
+int main fonksiyonunda atanan değişkenler;
+menu: Switch yapısındaki kontrolü sağlıyor. NOT: goto deyimindeki menu ile karıştırma
+i: musteriekle fonksiyonundaki döngü için kullanılıyor. i nin atamasını ve arttırımı int main fonksiyonunda.
+musteriekle fonksiyonundaki değişkenler;
+ad: kullanıcının girdiği ismi kısa süreli kendisinde tutup struct a kopyalıyor
+soyad: soyismi kopyalıyor
+num: telefon numarasını kopyalıyor
+k: fonksiyondaki döngüyü kontrol ediyor
+struct'daki değişkenler:
+isim: müşterilerin isimlerini tutuyor.
+soyisim: soyisimlerini tutuyor.
+numara: telefon numaralarını tutuyor.
+struct yapıları
+struct ın ilk ismi müsteri, int main fonksiyonundaki adı musteribilgi,musteriekle fonksiyonundaki adı mstr.
+struct ı Array olarak ve 5 indisli atadım istersen indisini arttırabilirsin.
