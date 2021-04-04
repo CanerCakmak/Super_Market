@@ -10,7 +10,7 @@ struct musteri{
 };
 
 void musteriekle(struct musteri mstr[], int i){
-	// Ýki tane müþteri tanýmladým. Ardýndan eklenecek müþterilerin bilgilerini aldýrýp döngüde bütün müþterileri yazdýrdým.
+	// ï¿½ki tane mï¿½ï¿½teri tanï¿½mladï¿½m. Ardï¿½ndan eklenecek mï¿½ï¿½terilerin bilgilerini aldï¿½rï¿½p dï¿½ngï¿½de bï¿½tï¿½n mï¿½ï¿½terileri yazdï¿½rdï¿½m.
 		char ad[20];
 		char soyad[20];
 		long long int num;
@@ -24,11 +24,11 @@ void musteriekle(struct musteri mstr[], int i){
 		strcpy(mstr[1].soyisim,"Denerel");
 		mstr[1].numara = 5429644661;
 
-			printf("Müþterinin Adýný Giriniz: ");
+			printf("Mï¿½ï¿½terinin Adï¿½nï¿½ Giriniz: ");
 			scanf("%s",&ad);
-			printf("Müþterinin Soyadýný GÝriniz: ");
+			printf("Mï¿½ï¿½terinin Soyadï¿½nï¿½ Gï¿½riniz: ");
 			scanf("%s",&soyad);
-			printf("Müþterinin Cep Telefonu Numarasýný Giriniz (534******* Þeklinde):  ");
+			printf("Mï¿½ï¿½terinin Cep Telefonu Numarasï¿½nï¿½ Giriniz (534******* ï¿½eklinde):  ");
 			scanf("%lld",&num);
 			printf("\n\n");
 			
@@ -36,7 +36,7 @@ void musteriekle(struct musteri mstr[], int i){
 			strcpy(mstr[i].soyisim, soyad);
 			mstr[i].numara = num;
 
-			printf("ID\t\tÝsim\t\tSoyisim\t\t\tTelefon Numarasý\n");
+			printf("ID\t\tï¿½sim\t\tSoyisim\t\t\tTelefon Numarasï¿½\n");
 		for(k=0; k<=i; k++){
 			printf("---------------------------------------------------------------------------\n");
 			printf("%d\t\t%s\t\t%s\t\t\t%lld\n",k+1,mstr[k].isim,mstr[k].soyisim,mstr[k].numara);
@@ -48,49 +48,50 @@ void musteriekle(struct musteri mstr[], int i){
 
 int main()
 {
+
 	setlocale(LC_ALL, "Turkish");
 	
 	int menu,i;
 	i=2;
-	printf("\t\t\t\t%c%c%c%c%cMarketimize Hoþgeldiniz%c%c%c%c%c\n\n",126,126,126,126,126,126,126,126,126,126);
+	printf("\t\t\t\t%c%c%c%c%cMarketimize Hoï¿½geldiniz%c%c%c%c%c\n\n",126,126,126,126,126,126,126,126,126,126);
 	
-	menu:printf("1.Müþteri Ekleme\t\t\t2.Ürün Ekleme\n3.Satýþ\t\t\t\t\t4.Toplam Satýþlarý Görüntüle\n5.Market Hakkýnda Bilgilendirme\t\t6.Çýkýþ\n\n");
-	printf("Lütfen bir iþlem seçiniz: ");
+	menu:printf("1.Mï¿½ï¿½teri Ekleme\t\t\t2.ï¿½rï¿½n Ekleme\n3.Satï¿½ï¿½\t\t\t\t\t4.Toplam Satï¿½ï¿½larï¿½ Gï¿½rï¿½ntï¿½le\n5.Market Hakkï¿½nda Bilgilendirme\t\t6.ï¿½ï¿½kï¿½ï¿½\n\n");
+	printf("Lï¿½tfen bir iï¿½lem seï¿½iniz: ");
 	scanf("%d",&menu);
 	printf("\n\n");
-	//Switch içinde goto deyimi ile baþa döndürdüm. Menü hemen gelmesin diye de getch fonksiyonunu kullandým.
+	//Switch iï¿½inde goto deyimi ile baï¿½a dï¿½ndï¿½rdï¿½m. Menï¿½ hemen gelmesin diye de getch fonksiyonunu kullandï¿½m.
 	switch(menu) {
 		case 1:
-			printf("\t\tMüþteri Ekleme\n\n");
+			printf("\t\tMï¿½ï¿½teri Ekleme\n\n");
 			
 			struct musteri musteribilgi[5];
 			musteriekle(musteribilgi,i);
 			i++;
-			printf("\t\t\tMenüye Geçmek Ýçin Herhangi Bir Tuþa Basýnýz....\n\n");
+			printf("\t\t\tMenï¿½ye Geï¿½mek ï¿½ï¿½in Herhangi Bir Tuï¿½a Basï¿½nï¿½z....\n\n");
 			getch();
 			goto menu;
 			
 		case 2:
-			printf("Ürün ekleme\n\n");
-			printf("\t\t\tMenüye Geçmek Ýçin Herhangi Bir Tuþa Basýnýz....\n\n");
+			printf("ï¿½rï¿½n ekleme\n\n");
+			printf("\t\t\tMenï¿½ye Geï¿½mek ï¿½ï¿½in Herhangi Bir Tuï¿½a Basï¿½nï¿½z....\n\n");
 			getch();
 			goto menu;
 			
 		case 3:
-			printf ("Satýþ\n\n");
-			printf("\t\t\tMenüye Geçmek Ýçin Herhangi Bir Tuþa Basýnýz....\n\n");
+			printf ("Satï¿½ï¿½\n\n");
+			printf("\t\t\tMenï¿½ye Geï¿½mek ï¿½ï¿½in Herhangi Bir Tuï¿½a Basï¿½nï¿½z....\n\n");
 			getch();
 			goto menu;
 			
 		case 4:
-			printf("Toplam satýþlarý görüntüle\n\n");
-			printf("\t\t\tMenüye Geçmek Ýçin Herhangi Bir Tuþa Basýnýz....\n\n");
+			printf("Toplam satï¿½ï¿½larï¿½ gï¿½rï¿½ntï¿½le\n\n");
+			printf("\t\t\tMenï¿½ye Geï¿½mek ï¿½ï¿½in Herhangi Bir Tuï¿½a Basï¿½nï¿½z....\n\n");
 			getch();
 			goto menu;
 			
 		case 5:
-			printf("Market hakkýnda bilgilendirme\n\n");
-			printf("\t\t\tMenüye Geçmek Ýçin Herhangi Bir Tuþa Basýnýz....\n\n");
+			printf("Market hakkï¿½nda bilgilendirme\n\n");
+			printf("\t\t\tMenï¿½ye Geï¿½mek ï¿½ï¿½in Herhangi Bir Tuï¿½a Basï¿½nï¿½z....\n\n");
 			getch();
 			goto menu;
 			
@@ -98,12 +99,13 @@ int main()
 			break;
 			
 		default:
-			printf("Bilinmeyen iþlem\n");
+			printf("Bilinmeyen iï¿½lem\n");
 			goto menu;
 		
 	}
 	
 
 	
+
     return 0;
 }
