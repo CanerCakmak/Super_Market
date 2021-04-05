@@ -170,7 +170,6 @@ int main()
 			printf("Urun ekleme\n\n");
 			struct urun urunler[8];
 			urunekle(urunler,t,l);
-			
 			//t++;
 			//l++;
 			printf("\t\t\tMenuye Gecmek icin Herhangi Bir Tusa Basiniz....\n\n");
