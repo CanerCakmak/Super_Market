@@ -102,6 +102,7 @@ void musteriekle(struct musteri mstr[], int i){
         {
         if(urnid==urn[z].urunid)
             {
+            
             urn[z].urunadet = urnadet + urn[z].urunadet;
             l--;
             t--;
@@ -123,6 +124,8 @@ void musteriekle(struct musteri mstr[], int i){
             urn[t].urunadet = urnadet;
             urn[t].urunfiyat = urnfiyat;
 
+			t++;
+			l++;
          bitis: printf("Urun eklenmistir.\n\n");
 
 
@@ -169,6 +172,8 @@ int main()
 			urunekle(urunler,t,l);
 			t++;
 			l++;
+			//t++;
+			//l++;
 			printf("\t\t\tMenuye Gecmek icin Herhangi Bir Tusa Basiniz....\n\n");
 			getch();
 			goto menu;
