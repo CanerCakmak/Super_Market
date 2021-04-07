@@ -38,13 +38,11 @@ void musteriekle(struct musteri mstr[], int i){
 		strcpy(mstr[0].isim,"Furkan");
 		strcpy(mstr[0].soyisim,"Serbest");
 		mstr[0].numara = 5328427845;
-
 		mstr[0].id = 1;
 		
 		strcpy(mstr[1].isim,"Murat");
 		strcpy(mstr[1].soyisim,"Denerel");
 		mstr[1].numara = 5429644661;
-
 		mstr[1].id = 2;
 		
 			printf("Musterinin Adini Giriniz: ");
@@ -58,12 +56,10 @@ void musteriekle(struct musteri mstr[], int i){
 			strcpy(mstr[i].isim, ad);
 			strcpy(mstr[i].soyisim, soyad);
 			mstr[i].numara = num;
-
 			mstr[i].id = mstr[i-1].id + 1;
 			printf("ID\t\tIsim\t\tSoyisim\t\t\tTelefon Numarasi\n");
 		for(k=0; k<=i; k++){
 			printf("---------------------------------------------------------------------------\n");
-			printf("%d\t\t%s\t\t%s\t\t\t%lld\n",k+1,mstr[k].isim,mstr[k].soyisim,mstr[k].numara);
 			printf("%d\t\t%s\t\t%s\t\t\t%lld\n",mstr[k].id,mstr[k].isim,mstr[k].soyisim,mstr[k].numara);
 		}
 		printf("\n\n");
@@ -184,14 +180,14 @@ void urunsatma(struct urun urn[],struct satis urunsatma[],struct musteri mstr[],
 	
 		for(z=0;z<l;z++){
 		if(urn[z].urunadet<10){
-			printf("Uyarï¿½: %d ID Numarasina sahip urunun stogu 10'un altï¿½na dusmustur.\n",z+1);
+			printf("Uyarý: %d ID Numarasina sahip urunun stogu 10'un altýna dusmustur.\n",z+1);
 		}
 	}
 }
 void toplamsatis(struct urun urn[],struct satis urunsatma[],struct musteri mstr[],int l,int k){
 	int z;
 	int tutar=0;
-	printf("Urun ID\t\tMusteri Adï¿½\t\t\tTarih\t\t\tAdet\t\tFiyat\n");
+	printf("Urun ID\t\tMusteri Adý\t\t\tTarih\t\t\tAdet\t\tFiyat\n");
 		for(z=0; z<k; z++){
 			printf("--------------------------------------------------------------------------------------------------------------------\n");
 			printf("%.4d\t\t%s %s\t\t\t%d.%d.%d\t\t%d\t\t%d\n",urunsatma[z].saturnid,mstr[urunsatma[z].satmstrid].isim,mstr[urunsatma[z].satmstrid].soyisim,urunsatma[z].trh.gun,urunsatma[z].trh.ay,urunsatma[z].trh.yil,urunsatma[z].satadet,urn[urunsatma[z].saturnid].urunfiyat);
@@ -209,7 +205,7 @@ void toplamsatis(struct urun urn[],struct satis urunsatma[],struct musteri mstr[
    printf("ABC Martketleri olarak Asya, Avrupa ve Kuzey Amerika kitalarinda Turkiye, Almanya, Kanada, Cin ve Guney Kore ulkelerinde hizmet vermekteyiz.\n\n");
    printf("\t\t\tAvrupa Kitasi Temsilcileri\n\tTurkiye\t\t\t\t\t\tAlmanya\n");
    printf("--------------------------------------------------------------------------------------------------------------------\n");
-   printf("Istanbul: Alï¿½ Tas\t\t\t\tBerlin: Damian Berthes\nIzmir: Ahmet Akbunar\t\t\t\tMunih: Hans Tuchel\nAnkara: Zeynep ï¿½zdemir\t\t\t\tDortmund: Emma Reus\n\n");
+   printf("Istanbul: Alý Tas\t\t\t\tBerlin: Damian Berthes\nIzmir: Ahmet Akbunar\t\t\t\tMunih: Hans Tuchel\nAnkara: Zeynep Özdemir\t\t\t\tDortmund: Emma Reus\n\n");
    printf("\t\t\tAsya Kitasi Temsilcileri\n\tCin\t\t\t\t\t\tGuney Kore\n");
    printf("--------------------------------------------------------------------------------------------------------------------\n");
    printf("Pekin: Wu Peiliang\t\t\t\tBusan: Kim Sun-Ho\nShanghai: Chen Haoyang\t\t\t\tSeul: Cho Seon-Woo\nWuhan: Lin Jinping\t\t\t\tDaegu: Yoo Min-Seok\n\n");
@@ -222,15 +218,12 @@ int main()
 {
 
 	setlocale(LC_ALL, "Turkish");
-
-	int menu,i,t,l;
 	
 	int menu,i,t,l,k;
 	k=0;
 	i=2;
 	t=5;
 	l=5;
-	printf("\t\t\t\t%c%c%c%c%cMarketimize Hosgeldiniz%c%c%c%c%c\n\n",126,126,126,126,126,126,126,126,126,126);
 	printf("\t\t\t\t%c%c%c%c%cABC Markete Hosgeldiniz%c%c%c%c%c\n\n",126,126,126,126,126,126,126,126,126,126);
 
 	menu:printf("1.Musteri Ekleme\t\t\t2.Urun Ekleme\n3.Satis\t\t\t\t\t4.Toplam Satislari Goruntule\n5.Market Hakkinda Bilgilendirme\t\t6.Cikis\n\n");
@@ -240,8 +233,6 @@ int main()
 	//Switch iï¿½inde goto deyimi ile baï¿½a dï¿½ndï¿½rdï¿½m. Menï¿½ hemen gelmesin diye de getch fonksiyonunu kullandï¿½m.
 	switch(menu) {
 		case 1:
-			printf("\t\tMusteri Ekleme\n\n");
-
 			printf("\t\tMusteri Ekleme\n");
 			printf("\t------------------------------\n\n");
 			struct musteri musteribilgi[5];
@@ -252,7 +243,6 @@ int main()
 			goto menu;
 
 		case 2:
-			printf("Urun ekleme\n\n");
 			printf("\t\tUrun ekleme\n");
 			printf("\t---------------------------\n\n");
 			struct urun urunler[8];
@@ -264,7 +254,6 @@ int main()
 			goto menu;
 
 		case 3:
-			printf ("Satis\n\n");
 			printf ("\t\tSatis\n");
 			printf("\t---------------------\n\n");
 			struct satis urnsat[10];
