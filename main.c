@@ -123,7 +123,6 @@ void musteriekle(struct musteri mstr[], int i){
             urn[t].urunkategori = urnktgr;
             urn[t].urunadet = urnadet;
             urn[t].urunfiyat = urnfiyat;
-
 			t++;
 			l++;
          bitis: printf("Urun eklenmistir.\n\n");
@@ -170,8 +169,6 @@ int main()
 			printf("Urun ekleme\n\n");
 			struct urun urunler[8];
 			urunekle(urunler,t,l);
-			t++;
-			l++;
 			//t++;
 			//l++;
 			printf("\t\t\tMenuye Gecmek icin Herhangi Bir Tusa Basiniz....\n\n");
