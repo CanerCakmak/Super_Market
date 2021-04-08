@@ -39,12 +39,12 @@ void musteriekle(struct musteri mstr[], int i){
 		strcpy(mstr[0].soyisim,"Serbest");
 		mstr[0].numara = 5328427845;
 		mstr[0].id = 1;
-		
+
 		strcpy(mstr[1].isim,"Murat");
 		strcpy(mstr[1].soyisim,"Denerel");
 		mstr[1].numara = 5429644661;
 		mstr[1].id = 2;
-		
+
 			printf("Musterinin Adini Giriniz: ");
 			scanf("%s",&ad);
 			printf("Musterinin Soyadini Giriniz: ");
@@ -57,7 +57,7 @@ void musteriekle(struct musteri mstr[], int i){
 			strcpy(mstr[i].soyisim, soyad);
 			mstr[i].numara = num;
 			mstr[i].id = mstr[i-1].id + 1;
-			
+
 			printf("ID\t\tIsim\t\tSoyisim\t\t\tTelefon Numarasi\n");
 		for(k=0; k<=i; k++){
 			printf("---------------------------------------------------------------------------\n");
@@ -68,7 +68,7 @@ void musteriekle(struct musteri mstr[], int i){
 
 }
 
-   void urunekle(struct urun urn[],int t,int l){
+   void urunekle(struct urun urn[],int *x,int *y){
 
     int urnid;
     char urnad[20];
@@ -76,8 +76,137 @@ void musteriekle(struct musteri mstr[], int i){
     int urnadet=0;
     int urnfiyat;
     int z;
+    int o;
+    int p;
 
-    urn[0].urunid = 1;
+    printf("Eklemek istediginiz urunun kodunu giriniz (sadece sayi kullaniniz):  ");
+    scanf("%d",&urnid);
+    printf("Eklemek istediginiz urunun adetini giriniz:  ");
+    scanf("%d",&urnadet);
+
+
+        for(z=0; z<=*y; z++)
+        {
+        if(urnid==urn[z].urunid)
+            {
+
+            urn[z].urunadet = urnadet + urn[z].urunadet;
+
+
+
+            printf("Urun ID\t\tUrun Ad\t\tUrun Kategori\t\tUrun Adet\t\tUrun Fiyat\n");
+		for(z=0; z<=*x; z++){
+			printf("--------------------------------------------------------------------------------------------------------------------\n");
+			printf("%.4d\t\t%s\t\t\t%d\t\t  %d\t\t\t%d\n",urn[z].urunid,urn[z].urunisim,urn[z].urunkategori,urn[z].urunadet,urn[z].urunfiyat);
+		}
+		printf("\n\n");
+
+            goto bitis;
+
+            }
+        }
+
+
+            printf("Eklemek istediginiz urunun ismini giriniz: ");
+            scanf("%s",&urnad);
+            printf("Eklemek istediginiz urunun kategorisini giriniz(1=giyim 2=elektronik 3=mobilya 4=temizlik 5=gÄ±da):   ");
+            scanf("%d",&urnktgr);
+            printf("Eklemek istediginiz urunun fiyatini giriniz:  ");
+            scanf("%d",&urnfiyat);
+
+            urn[*y].urunid = urnid;
+            strcpy(urn[*y].urunisim, urnad);
+            urn[*y].urunkategori = urnktgr;
+            urn[*y].urunadet = urnadet;
+            urn[*y].urunfiyat = urnfiyat;
+			*y = *y + 1;
+            *x = *x + 1;
+
+         printf("Urun ID\t\tUrun Ad\t\tUrun Kategori\t\tUrun Adet\t\tUrun Fiyat\n");
+		for(z=0; z<=*x; z++){
+			printf("--------------------------------------------------------------------------------------------------------------------\n");
+			printf("%.4d\t\t%s\t\t\t%d\t\t  %d\t\t\t%d\n",urn[z].urunid,urn[z].urunisim,urn[z].urunkategori,urn[z].urunadet,urn[z].urunfiyat);
+		}
+		printf("\n\n");
+         bitis: printf("Urun eklenmistir.\n\n");
+
+
+   }
+   void urunsatma(struct urun urn[],struct satis urunsatma[],struct musteri mstr[],int l,int k){
+
+
+	int z;
+	printf("Satilan Urunun ID Numarasini Giriniz: ");
+	scanf("%d",&urunsatma[k].saturnid);
+	printf("Satin Alan Musterinin ID Numarasini Giriniz: ");
+	scanf("%d",&urunsatma[k].satmstrid);
+	printf("Urunun Satildigi Tarihi Giriniz(gun ay ve yil arasinda bir bosluk birakiniz): ");
+	scanf("%d %d %d",&urunsatma[k].trh.gun,&urunsatma[k].trh.ay,&urunsatma[k].trh.yil);
+	printf("Kac Adet Satin Alinmistir: ");
+	scanf("%d",&urunsatma[k].satadet);
+
+	for(z=0;z<=l;z++){
+		if(urunsatma[k].saturnid==urn[z].urunid){
+			urn[z].urunadet=urn[z].urunadet-urunsatma[k].satadet;
+		}
+	}
+
+	printf("Urun ID\t\tUrun Ad\t\tUrun Kategori\t\tUrun Adet\t\tUrun Fiyat\n");
+		for(z=0; z<=l; z++){
+			printf("--------------------------------------------------------------------------------------------------------------------\n");
+			printf("%.4d\t\t%s\t\t\t%d\t\t  %d\t\t\t%d\n",urn[z].urunid,urn[z].urunisim,urn[z].urunkategori,urn[z].urunadet,urn[z].urunfiyat);
+		}
+		printf("\n\n");
+
+		for(z=0;z<=l;z++){
+		if(urn[z].urunadet<10){
+			printf("Uyarý: %d ID Numarasina sahip urunun stogu 10'un altýna dusmustur.\n",z+1);
+		}
+	}
+}
+void toplamsatis(struct urun urn[],struct satis urunsatma[],struct musteri mstr[],int l,int k){
+	int z;
+	int tutar=0;
+	printf("Urun ID\t\tMusteri Adý\t\t\tTarih\t\t\tAdet\t\tFiyat\n");
+		for(z=0; z<k; z++){
+			printf("--------------------------------------------------------------------------------------------------------------------\n");
+			printf("%.4d\t\t%s %s\t\t\t%d.%d.%d\t\t%d\t\t%d\n",urunsatma[z].saturnid,mstr[urunsatma[z].satmstrid-1].isim,mstr[urunsatma[z].satmstrid-1].soyisim,urunsatma[z].trh.gun,urunsatma[z].trh.ay,urunsatma[z].trh.yil,urunsatma[z].satadet,urn[urunsatma[z].saturnid].urunfiyat);
+		}
+
+
+	for(z=0;z<k;z++){
+		tutar = urn[urunsatma[z].saturnid].urunfiyat * urunsatma[z].satadet;
+	}
+	printf("Toplam Satis: %d",tutar);
+	printf("\n\n");
+}
+   void bilgilendirme(){
+
+   printf("ABC Martketleri olarak Asya, Avrupa ve Kuzey Amerika kitalarinda Turkiye, Almanya, Kanada, Cin ve Guney Kore ulkelerinde hizmet vermekteyiz.\n\n");
+   printf("\t\t\tAvrupa Kitasi Temsilcileri\n\tTurkiye\t\t\t\t\t\tAlmanya\n");
+   printf("--------------------------------------------------------------------------------------------------------------------\n");
+   printf("Istanbul: Alý Tas\t\t\t\tBerlin: Damian Berthes\nIzmir: Ahmet Akbunar\t\t\t\tMunih: Hans Tuchel\nAnkara: Zeynep Özdemir\t\t\t\tDortmund: Emma Reus\n\n");
+   printf("\t\t\tAsya Kitasi Temsilcileri\n\tCin\t\t\t\t\t\tGuney Kore\n");
+   printf("--------------------------------------------------------------------------------------------------------------------\n");
+   printf("Pekin: Wu Peiliang\t\t\t\tBusan: Kim Sun-Ho\nShanghai: Chen Haoyang\t\t\t\tSeul: Cho Seon-Woo\nWuhan: Lin Jinping\t\t\t\tDaegu: Yoo Min-Seok\n\n");
+	printf("\t\t\tKuzey Amerika Kitasi Temsilcileri\n\tKanada\n");
+   printf("--------------------------------------------------------------------------------------------------------------------\n");
+   printf("Toronto: Cyle Lovato\nMontreal: Atiba Hutchinson\nVancouver: Hannah Brown\n\n");
+
+}
+int main()
+{
+
+	setlocale(LC_ALL, "Turkish");
+
+	int menu,i,t,l,k;
+	k=0;
+	i=2;
+	t=5;
+	l=4;
+
+	struct urun urn[10];
+	urn[0].urunid = 1;
     strcpy(urn[0].urunisim,"Kazak");
     urn[0].urunkategori = 1;
     urn[0].urunadet = 20;
@@ -107,125 +236,8 @@ void musteriekle(struct musteri mstr[], int i){
     urn[4].urunadet = 30;
     urn[4].urunfiyat = 1;
 
-    printf("Eklemek istediginiz urunun kodunu giriniz (sadece sayi kullaniniz):  ");
-    scanf("%d",&urnid);
-    printf("Eklemek istediginiz urunun adetini giriniz):  ");
-    scanf("%d",&urnadet);
 
 
-        for(z=0; z<=t; z++)
-        {
-        if(urnid==urn[z].urunid)
-            {
-            
-            urn[z].urunadet = urnadet + urn[z].urunadet;
-            l--;
-            t--;
-            goto bitis;
-            }
-        }
-
-
-            printf("Eklemek istediginiz urunun ismini giriniz: ");
-            scanf("%s",&urnad);
-            printf("Eklemek istediginiz urunun kategorisini giriniz(1=giyim 2=elektronik 3=mobilya 4=temizlik 5=gÄ±da):   ");
-            scanf("%d",&urnktgr);
-            printf("Eklemek istediginiz urunun FiyatÄ±nÄ± giriniz:  ");
-            scanf("%d",&urnfiyat);
-
-            urn[t].urunid = urnid;
-            strcpy(urn[t].urunisim, urnad);
-            urn[t].urunkategori = urnktgr;
-            urn[t].urunadet = urnadet;
-            urn[t].urunfiyat = urnfiyat;
-
-			t++;
-			l++;
-         bitis: printf("Urun eklenmistir.\n\n");
-
-
-
-
-        printf("Urun ID\t\tUrun Ad\t\tUrun Kategori\t\tUrun Adet\t\tUrun Fiyat\n");
-		for(z=0; z<=l; z++){
-			printf("--------------------------------------------------------------------------------------------------------------------\n");
-			printf("%.4d\t\t%s\t\t\t%d\t\t  %d\t\t\t%d\n",urn[z].urunid,urn[z].urunisim,urn[z].urunkategori,urn[z].urunadet,urn[z].urunfiyat);
-		}
-		printf("\n\n");
-
-   }
-   void urunsatma(struct urun urn[],struct satis urunsatma[],struct musteri mstr[],int l,int k){
-	
-	
-	int z;
-	printf("Satilan Urunun ID Numarasini Giriniz: ");
-	scanf("%d",&urunsatma[k].saturnid);
-	printf("Satin Alan Musterinin ID Numarasini Giriniz: ");
-	scanf("%d",&urunsatma[k].satmstrid);
-	printf("Urunun Satildigi Tarihi Giriniz: ");
-	scanf("%d %d %d",&urunsatma[k].trh.gun,&urunsatma[k].trh.ay,&urunsatma[k].trh.yil);
-	printf("Kac Adet Satin Alinmistir: ");
-	scanf("%d",&urunsatma[k].satadet);
-	
-	for(z=0;z<l;z++){
-		if(urunsatma[k].saturnid==urn[z].urunid){
-			urn[z].urunadet=urn[z].urunadet-urunsatma[k].satadet;
-		}
-	}
-	
-	printf("Urun ID\t\tUrun Ad\t\tUrun Kategori\t\tUrun Adet\t\tUrun Fiyat\n");
-		for(z=0; z<l; z++){
-			printf("--------------------------------------------------------------------------------------------------------------------\n");
-			printf("%.4d\t\t%s\t\t\t%d\t\t  %d\t\t\t%d\n",urn[z].urunid,urn[z].urunisim,urn[z].urunkategori,urn[z].urunadet,urn[z].urunfiyat);
-		}
-		printf("\n\n");
-	
-		for(z=0;z<l;z++){
-		if(urn[z].urunadet<10){
-			printf("Uyarý: %d ID Numarasina sahip urunun stogu 10'un altýna dusmustur.\n",z+1);
-		}
-	}
-}
-void toplamsatis(struct urun urn[],struct satis urunsatma[],struct musteri mstr[],int l,int k){
-	int z;
-	int tutar=0;
-	printf("Urun ID\t\tMusteri Adý\t\t\tTarih\t\t\tAdet\t\tFiyat\n");
-		for(z=0; z<k; z++){
-			printf("--------------------------------------------------------------------------------------------------------------------\n");
-			printf("%.4d\t\t%s %s\t\t\t%d.%d.%d\t\t%d\t\t%d\n",urunsatma[z].saturnid,mstr[urunsatma[z].satmstrid-1].isim,mstr[urunsatma[z].satmstrid-1].soyisim,urunsatma[z].trh.gun,urunsatma[z].trh.ay,urunsatma[z].trh.yil,urunsatma[z].satadet,urn[urunsatma[z].saturnid].urunfiyat);
-		}
-		
-		
-	for(z=0;z<k;z++){
-		tutar = urn[urunsatma[z].saturnid].urunfiyat * urunsatma[z].satadet;
-	}
-	printf("Toplam Satis: %d",tutar);
-	printf("\n\n");
-}
-   void bilgilendirme(){
-   
-   printf("ABC Martketleri olarak Asya, Avrupa ve Kuzey Amerika kitalarinda Turkiye, Almanya, Kanada, Cin ve Guney Kore ulkelerinde hizmet vermekteyiz.\n\n");
-   printf("\t\t\tAvrupa Kitasi Temsilcileri\n\tTurkiye\t\t\t\t\t\tAlmanya\n");
-   printf("--------------------------------------------------------------------------------------------------------------------\n");
-   printf("Istanbul: Alý Tas\t\t\t\tBerlin: Damian Berthes\nIzmir: Ahmet Akbunar\t\t\t\tMunih: Hans Tuchel\nAnkara: Zeynep Özdemir\t\t\t\tDortmund: Emma Reus\n\n");
-   printf("\t\t\tAsya Kitasi Temsilcileri\n\tCin\t\t\t\t\t\tGuney Kore\n");
-   printf("--------------------------------------------------------------------------------------------------------------------\n");
-   printf("Pekin: Wu Peiliang\t\t\t\tBusan: Kim Sun-Ho\nShanghai: Chen Haoyang\t\t\t\tSeul: Cho Seon-Woo\nWuhan: Lin Jinping\t\t\t\tDaegu: Yoo Min-Seok\n\n");
-	printf("\t\t\tKuzey Amerika Kitasi Temsilcileri\n\tKanada\n");
-   printf("--------------------------------------------------------------------------------------------------------------------\n");
-   printf("Toronto: Cyle Lovato\nMontreal: Atiba Hutchinson\nVancouver: Hannah Brown\n\n");
-   
-}
-int main()
-{
-
-	setlocale(LC_ALL, "Turkish");
-
-	int menu,i,t,l,k;
-	k=0;
-	i=2;
-	t=5;
-	l=5;
 	printf("\t\t\t\t%c%c%c%c%cMarketimize Hosgeldiniz%c%c%c%c%c\n\n",126,126,126,126,126,126,126,126,126,126);
 
 	menu:printf("1.Musteri Ekleme\t\t\t2.Urun Ekleme\n3.Satis\t\t\t\t\t4.Toplam Satislari Goruntule\n5.Market Hakkinda Bilgilendirme\t\t6.Cikis\n\n");
@@ -246,9 +258,8 @@ int main()
 
 		case 2:
 			printf("Urun ekleme\n\n");
-			struct urun urunler[8];
-			urunekle(urunler,t,l);
-			
+			urunekle(urn,&l,&t);
+
 			printf("\t\t\tMenuye Gecmek icin Herhangi Bir Tusa Basiniz....\n\n");
 			getch();
 			goto menu;
@@ -257,7 +268,7 @@ int main()
 			printf ("\t\tSatis\n");
 			printf("\t---------------------\n\n");
 			struct satis urnsat[10];
-			urunsatma(urunler,urnsat,musteribilgi,l,k);
+			urunsatma(urn,urnsat,musteribilgi,l,k);
 			k++;
 			printf("\t\t\tMenuye Gecmek icin Herhangi Bir Tusa Basiniz....\n\n");
 			getch();
@@ -265,7 +276,7 @@ int main()
 
 		case 4:
 			printf("Toplam satislari goruntule\n\n");
-			toplamsatis(urunler,urnsat,musteribilgi,l,k);
+			toplamsatis(urn,urnsat,musteribilgi,l,k);
 			printf("\t\t\tMenuye Gecmek icin Herhangi Bir Tusa Basiniz....\n\n");
 			getch();
 			goto menu;
