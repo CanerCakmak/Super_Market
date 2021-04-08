@@ -36,3 +36,41 @@ struct ı Array olarak ve 5 indisli atadım istersen indisini arttırabilirsin.
 
 urunlerin tutulduğu struct ismi urun , main fonksiyondaki struct utunler, urunekle fonksiyonunda urn.
 struct array olarak 7 indis verdim bunun bunların 0-1-2-3-4 olanları ben atadım.
+
+1 tane typedef struct belirledim adını tarih koyup bunun içinde satış kısmında isteyeceğimiz gün,ay ve yıl diye değişken belirledim.
+satis isimli bir struct belirledim bunun içinde satılan ürünün idsini, satın alan müsşterinin idsini, satılan ürün adetini
+ve tarihi tutan değişkenler belirledim. daha sonra bu structı array olarak belirledim.
+
+urunsatma adında fonksiyon yazdım. Bu fonksiyona sırasıyla urun structını urn ismiyle, satis structını urunsatma ismiyle,
+ musteri structını mstr ismiyle ve daha önce döngülerin kontrolünü sağlaması amacıyla int main de belirlenmiş olan l ve k
+ değerlerini çağırdım.
+fonksiyonun içinde z döngü değişkeni belirledim.
+
+Not: isimler arasında benzerlik olsa da farklı fonksiyonlar olduğu için programda sıkıntı çıkmıyor ve az çok benzer işleri 
+yapmaları sebebiyle bende farklı bir isim koymak istemedim.
+
+urunsatma fonksiyonunda yapılan işler;
+Önce müşteriden bilgiler isteniyor. Alınan bilgiler struct arraylerde k'ninci indiste tutuluyor. k int mainde 0 belirlenmiş olup
+her bu fonksiyondan çıkıldığında değeri 1 artıyor böylelikle bir daha bu fonksiyona girilecek olursa kullanıcıdan alınacak
+bilgileri diğer bilgilerin üstüne yazmamış olacak.
+ilk for döngüsü: z değişkeni ve int mainden gelen l değişkeni aracılığıyla kontrol ediliyor.
+Amacı kullanıcıdan alınan ürün id numarasını tanımlanan bütün ürünlerin id numaralarıyla karşılaştırıp eşit olanlarda
+kullanıcının girdiği adet sayısını ürün sayısından azaltıyor.
+2. for döngüsü: satış sonrası mevcut olan bütün ürünleri yazdırıyor.
+3. for döngüsü: yazdırılan malları kontrol dip eğer stoğu 10un altına düşmüşse uyarı mesajı yazıyor.
+
+toplamsatis fonksiyonunda yapılan işler;
+urunsatma fonksiyonundaki çağrılan parametreler aynı isim ve aynı amaçla tekrar çağrılmıştır.
+burada da bir döngü değişkeni olarak z belirlenmiştir.
+1. for döngüsü: kayda giren her satışları yazdırmak amacıyla kullanılıyor. k değeriyle kontrol ediliyor çünkü satışları 
+k değerindeki indislerde tutuyorduk.
+2. for döngüsü: Yapılan bütün satışlardan toplam ne kadar kazandığımızı yazdırmak için tutar hesaplıyor.
+
+Not: Buradaki bazı struct arraylerin indisleri aynı zamanda başka bir struct array burası biraz kafa karıştırıcı.
+birinden örnek verirsem: mesela mstr[urunsatma[z].satmstr-1].isim yazılmış. burada döngüdeki z değeri atıyorum 0,
+ urunsatma struct arrayinin 0. indisindeki müşteri id numarasını (eğer varsa ) çağırıyor ve o sayının 1 eksiğini
+(çünkü 0. indisteki müşterinin idsini 1 olarak belirlemiştik) çağırıyor ve mstr struct arrayinin indisi oluyor.
+o indisteki ismi yazdırıyor.
+
+bilgilendirme fonksiyonu içinde yapılan işler;
+Burada da hocanın istediği ama programın kullanım amacında pek önemi olmayan bilgileri yazdırdık.
