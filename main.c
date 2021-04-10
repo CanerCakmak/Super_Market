@@ -166,13 +166,11 @@ void musteriekle(struct musteri mstr[], int i){
 }
 void toplamsatis(struct urun urn[],struct satis urunsatma[],struct musteri mstr[],int l,int k){
 	tarih kontrol;
-	int z,m,n;
+	int z;
 	int tutar=0;
 	printf("Tarih giriniz (gun ay ve yil arasinda bir bosluk birakiniz): ");
 	scanf("%d %d %d",&kontrol.gun,&kontrol.ay,&kontrol.yil);
-	if(kontrol.gun!=urunsatma[z].trh.gun || kontrol.ay!=urunsatma[z].trh.ay || kontrol.yil!=urunsatma[z].trh.yil){
-		printf("Girdiginiz Tarihte Satis Bulunmamaktadýr.\n\n");
-	}
+	
 	printf("Urun ID\t\tMusteri Adý\t\t\tTarih\t\t\tAdet\t\tFiyat\n");
 	for(z=0;z<k;z++){
 		if(kontrol.gun==urunsatma[z].trh.gun && kontrol.ay==urunsatma[z].trh.ay && kontrol.yil==urunsatma[z].trh.yil){
