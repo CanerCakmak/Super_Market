@@ -74,3 +74,8 @@ o indisteki ismi yazdırıyor.
 
 bilgilendirme fonksiyonu içinde yapılan işler;
 Burada da hocanın istediği ama programın kullanım amacında pek önemi olmayan bilgileri yazdırdık.
+
+toplamsatis fonksiyonunda kullanıcıdan tarih istiyor. tarihi tutup kontrol edebilmesi için bir tane kontrol değişkeni atadım.
+bir for döngüsü ve içindeki if komutu bize urunsatma struct arrayinin her indisi için tuttuğu tarihleri kontrol değişkeni
+aracılığıyla kullanıcıdan alınan tarihle kontrol ediyor eğer tarihler uyarsa o indisteki satışı yazıyor.
+ 

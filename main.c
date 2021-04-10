@@ -29,7 +29,7 @@ struct satis{
 };
 
 void musteriekle(struct musteri mstr[], int i){
-	// ï¿½ki tane mï¿½ï¿½teri tanï¿½mladï¿½m. Ardï¿½ndan eklenecek mï¿½ï¿½terilerin bilgilerini aldï¿½rï¿½p dï¿½ngï¿½de bï¿½tï¿½n mï¿½ï¿½terileri yazdï¿½rdï¿½m.
+
 		char ad[20];
 		char soyad[20];
 		long long int num;
@@ -145,7 +145,7 @@ void musteriekle(struct musteri mstr[], int i){
 	printf("Kac Adet Satin Alinmistir: ");
 	scanf("%d",&urunsatma[k].satadet);
 
-	for(z=0;z<=l;z++){
+	for(z=3;z<=l;z++){
 		if(urunsatma[k].saturnid==urn[z].urunid){
 			urn[z].urunadet=urn[z].urunadet-urunsatma[k].satadet;
 		}
@@ -165,20 +165,33 @@ void musteriekle(struct musteri mstr[], int i){
 	}
 }
 void toplamsatis(struct urun urn[],struct satis urunsatma[],struct musteri mstr[],int l,int k){
+	tarih kontrol;
 	int z;
 	int tutar=0;
+	printf("Tarih giriniz (gun ay ve yil arasinda bir bosluk birakiniz): ");
+	scanf("%d %d %d",&kontrol.gun,&kontrol.ay,&kontrol.yil);
+	
 	printf("Urun ID\t\tMusteri Adý\t\t\tTarih\t\t\tAdet\t\tFiyat\n");
-		for(z=0; z<k; z++){
-			printf("--------------------------------------------------------------------------------------------------------------------\n");
-			printf("%.4d\t\t%s %s\t\t\t%d.%d.%d\t\t%d\t\t%d\n",urunsatma[z].saturnid,mstr[urunsatma[z].satmstrid-1].isim,mstr[urunsatma[z].satmstrid-1].soyisim,urunsatma[z].trh.gun,urunsatma[z].trh.ay,urunsatma[z].trh.yil,urunsatma[z].satadet,urn[urunsatma[z].saturnid].urunfiyat);
-		}
-
-
 	for(z=0;z<k;z++){
-		tutar = urn[urunsatma[z].saturnid].urunfiyat * urunsatma[z].satadet;
+		if(kontrol.gun==urunsatma[z].trh.gun && kontrol.ay==urunsatma[z].trh.ay && kontrol.yil==urunsatma[z].trh.yil){
+			
+			printf("--------------------------------------------------------------------------------------------------------------------\n");
+			printf("%.4d\t\t%s %s\t\t\t%d.%d.%d\t\t%d\t\t%d\n",urunsatma[z].saturnid,mstr[urunsatma[z].satmstrid-1].isim,mstr[urunsatma[z].satmstrid-1].soyisim,urunsatma[z].trh.gun,urunsatma[z].trh.ay,urunsatma[z].trh.yil,urunsatma[z].satadet,urn[urunsatma[z].saturnid-1].urunfiyat);
+		
+			
+			tutar += urn[urunsatma[z].saturnid-1].urunfiyat * urunsatma[z].satadet;
+		
+		
 	}
-	printf("Toplam Satis: %d",tutar);
+	
+		}
+	
+	printf("Toplam Satis: %d TL",tutar);
 	printf("\n\n");
+		
+
+
+	
 }
    void bilgilendirme(){
 
@@ -200,10 +213,21 @@ int main()
 	setlocale(LC_ALL, "Turkish");
 
 	int menu,i,t,l,k;
-	k=0;
+	k=3;
 	i=2;
 	t=5;
 	l=4;
+	
+	struct musteri musteribilgi[5];
+	strcpy(musteribilgi[0].isim,"Furkan");
+	strcpy(musteribilgi[0].soyisim,"Serbest");
+	musteribilgi[0].numara = 5328427845;
+	musteribilgi[0].id = 1;
+
+	strcpy(musteribilgi[1].isim,"Murat");
+	strcpy(musteribilgi[1].soyisim,"Denerel");
+	musteribilgi[1].numara = 5429644661;
+	musteribilgi[1].id = 2;
 
 	struct urun urn[10];
 	urn[0].urunid = 1;
@@ -236,20 +260,40 @@ int main()
     urn[4].urunadet = 30;
     urn[4].urunfiyat = 1;
 
-
-
+	struct satis urnsat[10];
+	urnsat[0].saturnid=1;
+	urnsat[0].satmstrid=1;
+	urnsat[0].satadet=2;
+	urnsat[0].trh.gun=17;
+	urnsat[0].trh.ay=03;
+	urnsat[0].trh.yil=2021;
+	
+	urnsat[1].saturnid=3;
+	urnsat[1].satmstrid=2;
+	urnsat[1].satadet=1;
+	urnsat[1].trh.gun=17;
+	urnsat[1].trh.ay=03;
+	urnsat[1].trh.yil=2021;
+	
+	urnsat[2].saturnid=4;
+	urnsat[2].satmstrid=1;
+	urnsat[2].satadet=5;
+	urnsat[2].trh.gun=17;
+	urnsat[2].trh.ay=03;
+	urnsat[2].trh.yil=2021;
+	
 	printf("\t\t\t\t%c%c%c%c%cMarketimize Hosgeldiniz%c%c%c%c%c\n\n",126,126,126,126,126,126,126,126,126,126);
 
 	menu:printf("1.Musteri Ekleme\t\t\t2.Urun Ekleme\n3.Satis\t\t\t\t\t4.Toplam Satislari Goruntule\n5.Market Hakkinda Bilgilendirme\t\t6.Cikis\n\n");
 	printf("Lutfen bir islem seciniz: ");
 	scanf("%d",&menu);
 	printf("\n\n");
-	//Switch iï¿½inde goto deyimi ile baï¿½a dï¿½ndï¿½rdï¿½m. Menï¿½ hemen gelmesin diye de getch fonksiyonunu kullandï¿½m.
+
 	switch(menu) {
 		case 1:
 			printf("\t\tMusteri Ekleme\n\n");
 
-			struct musteri musteribilgi[5];
+			
 			musteriekle(musteribilgi,i);
 			i++;
 			printf("\t\t\tMenuye Gecmek icin Herhangi Bir Tusa Basiniz....\n\n");
@@ -267,7 +311,7 @@ int main()
 		case 3:
 			printf ("\t\tSatis\n");
 			printf("\t---------------------\n\n");
-			struct satis urnsat[10];
+			
 			urunsatma(urn,urnsat,musteribilgi,l,k);
 			k++;
 			printf("\t\t\tMenuye Gecmek icin Herhangi Bir Tusa Basiniz....\n\n");
@@ -275,14 +319,16 @@ int main()
 			goto menu;
 
 		case 4:
-			printf("Toplam satislari goruntule\n\n");
+			printf ("\t\tToplam satislari goruntule\n");
+			printf("\t---------------------\n\n");
 			toplamsatis(urn,urnsat,musteribilgi,l,k);
 			printf("\t\t\tMenuye Gecmek icin Herhangi Bir Tusa Basiniz....\n\n");
 			getch();
 			goto menu;
 
 		case 5:
-			printf("Market hakkinda bilgilendirme\n\n");
+			printf ("\t\tMarket hakkinda bilgilendirme\n");
+			printf("\t---------------------\n\n");
 			bilgilendirme();
 			printf("\t\t\tMenuye Gecmek icin Herhangi Bir Tusa Basiniz....\n\n");
 			getch();
