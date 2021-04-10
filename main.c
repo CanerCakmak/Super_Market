@@ -176,11 +176,15 @@ void toplamsatis(struct urun urn[],struct satis urunsatma[],struct musteri mstr[
 		if(kontrol.gun==urunsatma[z].trh.gun && kontrol.ay==urunsatma[z].trh.ay && kontrol.yil==urunsatma[z].trh.yil){
 			
 			printf("--------------------------------------------------------------------------------------------------------------------\n");
-			printf("%.4d\t\t%s %s\t\t\t%d.%d.%d\t\t%d\t\t%d\n",urunsatma[z].saturnid,mstr[urunsatma[z].satmstrid-1].isim,mstr[urunsatma[z].satmstrid-1].soyisim,urunsatma[z].trh.gun,urunsatma[z].trh.ay,urunsatma[z].trh.yil,urunsatma[z].satadet,urn[urunsatma[z].saturnid-1].urunfiyat);
+			printf("%.4d\t\t%s %s\t\t\t%d.%d.%d\t\t%d\t\t",urunsatma[z].saturnid,mstr[urunsatma[z].satmstrid-1].isim,mstr[urunsatma[z].satmstrid-1].soyisim,urunsatma[z].trh.gun,urunsatma[z].trh.ay,urunsatma[z].trh.yil,urunsatma[z].satadet);
 		
 			
-			tutar += urn[urunsatma[z].saturnid-1].urunfiyat * urunsatma[z].satadet;
-		
+			for(i=0;i<=l;i++){
+				if(urunsatma[z].saturnid==urn[i].urunid){
+					printf("%d\n",urn[i].urunfiyat);
+					tutar += urn[i].urunfiyat * urunsatma[z].satadet;
+				}
+		}
 		
 	}
 	
@@ -267,6 +271,7 @@ int main()
 	urnsat[0].trh.gun=17;
 	urnsat[0].trh.ay=03;
 	urnsat[0].trh.yil=2021;
+	urn[0].urunadet = urn[0].urunadet - urnsat[0].satadet
 	
 	urnsat[1].saturnid=3;
 	urnsat[1].satmstrid=2;
@@ -274,6 +279,7 @@ int main()
 	urnsat[1].trh.gun=17;
 	urnsat[1].trh.ay=03;
 	urnsat[1].trh.yil=2021;
+	urn[2].urunadet = urn[2].urunadet - urnsat[1].satadet
 	
 	urnsat[2].saturnid=4;
 	urnsat[2].satmstrid=1;
@@ -281,6 +287,7 @@ int main()
 	urnsat[2].trh.gun=17;
 	urnsat[2].trh.ay=03;
 	urnsat[2].trh.yil=2021;
+	urn[3].urunadet = urn[3].urunadet - urnsat[2].satadet
 	
 	printf("\t\t\t\t%c%c%c%c%cMarketimize Hosgeldiniz%c%c%c%c%c\n\n",126,126,126,126,126,126,126,126,126,126);
 
@@ -320,7 +327,7 @@ int main()
 
 		case 4:
 			printf ("\t\tToplam satislari goruntule\n");
-			printf("\t---------------------\n\n");
+			printf("\t   -----------------------------------\n\n");
 			toplamsatis(urn,urnsat,musteribilgi,l,k);
 			printf("\t\t\tMenuye Gecmek icin Herhangi Bir Tusa Basiniz....\n\n");
 			getch();
@@ -328,7 +335,7 @@ int main()
 
 		case 5:
 			printf ("\t\tMarket hakkinda bilgilendirme\n");
-			printf("\t---------------------\n\n");
+			printf("\t   ---------------------------------------\n\n");
 			bilgilendirme();
 			printf("\t\t\tMenuye Gecmek icin Herhangi Bir Tusa Basiniz....\n\n");
 			getch();
