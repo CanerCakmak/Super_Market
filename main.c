@@ -145,7 +145,7 @@ void musteriekle(struct musteri mstr[], int i){
 	printf("Kac Adet Satin Alinmistir: ");
 	scanf("%d",&urunsatma[k].satadet);
 
-	for(z=3;z<=l;z++){
+	for(z=0;z<=l;z++){
 		if(urunsatma[k].saturnid==urn[z].urunid){
 			urn[z].urunadet=urn[z].urunadet-urunsatma[k].satadet;
 		}
@@ -167,35 +167,36 @@ void musteriekle(struct musteri mstr[], int i){
 void toplamsatis(struct urun urn[],struct satis urunsatma[],struct musteri mstr[],int l,int k){
 	tarih kontrol;
 	int z;
+	int i;
 	int tutar=0;
 	printf("Tarih giriniz (gun ay ve yil arasinda bir bosluk birakiniz): ");
 	scanf("%d %d %d",&kontrol.gun,&kontrol.ay,&kontrol.yil);
-	
+
 	printf("Urun ID\t\tMusteri Adı\t\t\tTarih\t\t\tAdet\t\tFiyat\n");
 	for(z=0;z<k;z++){
 		if(kontrol.gun==urunsatma[z].trh.gun && kontrol.ay==urunsatma[z].trh.ay && kontrol.yil==urunsatma[z].trh.yil){
-			
+
 			printf("--------------------------------------------------------------------------------------------------------------------\n");
 			printf("%.4d\t\t%s %s\t\t\t%d.%d.%d\t\t%d\t\t",urunsatma[z].saturnid,mstr[urunsatma[z].satmstrid-1].isim,mstr[urunsatma[z].satmstrid-1].soyisim,urunsatma[z].trh.gun,urunsatma[z].trh.ay,urunsatma[z].trh.yil,urunsatma[z].satadet);
-		
-			
+
+
 			for(i=0;i<=l;i++){
 				if(urunsatma[z].saturnid==urn[i].urunid){
 					printf("%d\n",urn[i].urunfiyat);
 					tutar += urn[i].urunfiyat * urunsatma[z].satadet;
 				}
 		}
-		
+
 	}
-	
+
 		}
-	
+
 	printf("Toplam Satis: %d TL",tutar);
 	printf("\n\n");
-		
 
 
-	
+
+
 }
    void bilgilendirme(){
 
@@ -221,7 +222,7 @@ int main()
 	i=2;
 	t=5;
 	l=4;
-	
+
 	struct musteri musteribilgi[5];
 	strcpy(musteribilgi[0].isim,"Furkan");
 	strcpy(musteribilgi[0].soyisim,"Serbest");
@@ -271,24 +272,24 @@ int main()
 	urnsat[0].trh.gun=17;
 	urnsat[0].trh.ay=03;
 	urnsat[0].trh.yil=2021;
-	urn[0].urunadet = urn[0].urunadet - urnsat[0].satadet
-	
+	urn[0].urunadet = urn[0].urunadet - urnsat[0].satadet;
+
 	urnsat[1].saturnid=3;
 	urnsat[1].satmstrid=2;
 	urnsat[1].satadet=1;
 	urnsat[1].trh.gun=17;
 	urnsat[1].trh.ay=03;
 	urnsat[1].trh.yil=2021;
-	urn[2].urunadet = urn[2].urunadet - urnsat[1].satadet
-	
+	urn[2].urunadet = urn[2].urunadet - urnsat[1].satadet;
+
 	urnsat[2].saturnid=4;
 	urnsat[2].satmstrid=1;
 	urnsat[2].satadet=5;
 	urnsat[2].trh.gun=17;
 	urnsat[2].trh.ay=03;
 	urnsat[2].trh.yil=2021;
-	urn[3].urunadet = urn[3].urunadet - urnsat[2].satadet
-	
+	urn[3].urunadet = urn[3].urunadet - urnsat[2].satadet;
+
 	printf("\t\t\t\t%c%c%c%c%cMarketimize Hosgeldiniz%c%c%c%c%c\n\n",126,126,126,126,126,126,126,126,126,126);
 
 	menu:printf("1.Musteri Ekleme\t\t\t2.Urun Ekleme\n3.Satis\t\t\t\t\t4.Toplam Satislari Goruntule\n5.Market Hakkinda Bilgilendirme\t\t6.Cikis\n\n");
@@ -300,7 +301,7 @@ int main()
 		case 1:
 			printf("\t\tMusteri Ekleme\n\n");
 
-			
+
 			musteriekle(musteribilgi,i);
 			i++;
 			printf("\t\t\tMenuye Gecmek icin Herhangi Bir Tusa Basiniz....\n\n");
@@ -318,7 +319,7 @@ int main()
 		case 3:
 			printf ("\t\tSatis\n");
 			printf("\t---------------------\n\n");
-			
+
 			urunsatma(urn,urnsat,musteribilgi,l,k);
 			k++;
 			printf("\t\t\tMenuye Gecmek icin Herhangi Bir Tusa Basiniz....\n\n");
