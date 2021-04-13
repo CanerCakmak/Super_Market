@@ -109,7 +109,7 @@ void musteriekle(struct musteri mstr[], int i){
 
             printf("Eklemek istediginiz urunun ismini giriniz: ");
             scanf("%s",&urnad);
-            printf("Eklemek istediginiz urunun kategorisini giriniz(1=giyim 2=elektronik 3=mobilya 4=temizlik 5=gÄ±da):   ");
+            printf("Eklemek istediginiz urunun kategorisini giriniz(1=giyim 2=elektronik 3=mobilya 4=temizlik 5=gida):   ");
             scanf("%d",&urnktgr);
             printf("Eklemek istediginiz urunun fiyatini giriniz:  ");
             scanf("%d",&urnfiyat);
@@ -122,7 +122,7 @@ void musteriekle(struct musteri mstr[], int i){
 			*y = *y + 1;
             *x = *x + 1;
 
-         printf("Urun ID\t\tUrun Ad\t\tUrun Kategori\t\tUrun Adet\t\tUrun Fiyat\n");
+         printf("\nUrun ID\t\tUrun Ad\t\tUrun Kategori\t\tUrun Adet\t\tUrun Fiyat\n");
 		for(z=0; z<=*x; z++){
 			printf("--------------------------------------------------------------------------------------------------------------------\n");
 			printf("%.4d\t\t%s\t\t\t%d\t\t  %d\t\t\t%d\n",urn[z].urunid,urn[z].urunisim,urn[z].urunkategori,urn[z].urunadet,urn[z].urunfiyat);
@@ -151,7 +151,7 @@ void musteriekle(struct musteri mstr[], int i){
 		}
 	}
 
-	printf("Urun ID\t\tUrun Ad\t\tUrun Kategori\t\tUrun Adet\t\tUrun Fiyat\n");
+	printf("\nUrun ID\t\tUrun Ad\t\tUrun Kategori\t\tUrun Adet\t\tUrun Fiyat\n");
 		for(z=0; z<=l; z++){
 			printf("--------------------------------------------------------------------------------------------------------------------\n");
 			printf("%.4d\t\t%s\t\t\t%d\t\t  %d\t\t\t%d\n",urn[z].urunid,urn[z].urunisim,urn[z].urunkategori,urn[z].urunadet,urn[z].urunfiyat);
@@ -160,7 +160,7 @@ void musteriekle(struct musteri mstr[], int i){
 
 		for(z=0;z<=l;z++){
 		if(urn[z].urunadet<10){
-			printf("Uyarý: %d ID Numarasina sahip urunun stogu 10'un altýna dusmustur.\n",z+1);
+			printf("\nUyarý: %d ID Numarasina sahip urunun stogu 10'un altýna dusmustur.\n",urn[z].urunid);
 		}
 	}
 }
@@ -172,7 +172,7 @@ void toplamsatis(struct urun urn[],struct satis urunsatma[],struct musteri mstr[
 	printf("Tarih giriniz (gun ay ve yil arasinda bir bosluk birakiniz): ");
 	scanf("%d %d %d",&kontrol.gun,&kontrol.ay,&kontrol.yil);
 
-	printf("Urun ID\t\tMusteri Adý\t\t\tTarih\t\t\tAdet\t\tFiyat\n");
+	printf("\nUrun ID\t\tMusteri Adý\t\t\tTarih\t\t\tAdet\t\tFiyat\n");
 	for(z=0;z<k;z++){
 		if(kontrol.gun==urunsatma[z].trh.gun && kontrol.ay==urunsatma[z].trh.ay && kontrol.yil==urunsatma[z].trh.yil){
 
@@ -191,7 +191,7 @@ void toplamsatis(struct urun urn[],struct satis urunsatma[],struct musteri mstr[
 
 		}
 
-	printf("Toplam Satis: %d TL",tutar);
+	printf("\nToplam Satis: %d TL",tutar);
 	printf("\n\n");
 
 
