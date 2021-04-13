@@ -160,7 +160,7 @@ void musteriekle(struct musteri mstr[], int i){
 
 		for(z=0;z<=l;z++){
 		if(urn[z].urunadet<10){
-			printf("\nUyarı: %d ID Numarasina sahip urunun stogu 10'un altına dusmustur.\n",urn[z].urunid);
+			printf("\nUyari: %d ID Numarasina sahip urunun stogu 10'un altina dusmustur.\n",urn[z].urunid);
 		}
 	}
 }
