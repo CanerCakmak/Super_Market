@@ -292,7 +292,7 @@ int main()
 
 	printf("\t\t\t\t%c%c%c%c%cMarketimize Hosgeldiniz%c%c%c%c%c\n\n",126,126,126,126,126,126,126,126,126,126);
 
-	menu:printf("1.Musteri Ekleme\t\t\t2.Urun Ekleme\n3.Satis\t\t\t\t\t4.Toplam Satislari Goruntule\n5.Market Hakkinda Bilgilendirme\t\t6.Cikis\n\n");
+	menu:printf("1.Musteri Ekleme\t\t\t2.Urun Ekleme\n3.Satis\t\t\t\t\t4.Toplam Satislari Goruntule\n5.Market Hakkinda Bilgilendirme\t\t6.Hazirlayanlar\n7.Cikis\n\n");
 	printf("Lutfen bir islem seciniz: ");
 	scanf("%d",&menu);
 	printf("\n\n");
@@ -343,6 +343,13 @@ int main()
 			goto menu;
 
 		case 6:
+			printf("\t\t\t\t%c%c%c%c%c%c%c%c%c%c Powered by Group26... %c%c%c%c%c%c%c%c%c%c\n\n",126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126);
+			printf("\t\t\t\t\t\b\b\b\b Caner Çakmak\t\t200601070\n\t\t\t\t\t\b\b\b\b Özmen Kahveci\t\t200601015\n\n\n");
+			printf("\t\t\tMenuye Gecmek icin Herhangi Bir Tusa Basiniz....\n\n");
+			getch();
+			goto menu;
+			
+		case 7:
 			break;
 
 		default:
